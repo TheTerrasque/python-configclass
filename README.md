@@ -32,17 +32,17 @@ class Settings:
     foo: bool = False
     url: str = ""
     footoo: bool = True
-    model: str = "model.pt"
+    my_model: str = "model.pt"
     test: Test = field(default_factory=Test)
 
 
 setting = Settings.load()
 
-print(setting.foo, setting.footoo, setting.test.test)
+print(setting.foo, setting.footoo, setting.test.test, settings.my_model)
 ```
 
 ```
-python setting_test.py --foo true --footoo false --test-test "Test me"
+python setting_test.py --foo true --footoo false --test-test "Test me" --my_model "model2.pt"
 ```
 
 config.yaml:
@@ -71,7 +71,15 @@ CONFIG_TEST_TEST="Hey mate" python settings_test.py
 
 ```python
 
-@configclass(yaml_file="myfile.yml", json_file="myconfig.json", argparse_text="Program for testing configclass", env_prefix="MYTESTPROGRAM")
+@configclass(yaml_file="config.yaml", 
+    json_file="config.json", 
+    argparse_text="Program configuration command line arguments", 
+    env_prefix="CONFIG")
 ```
 
 Setting any of these to `None` will disable that part as a config source.
+
+## TODO
+
+- Add optional documentation to fields for use in argparse, most likely via field() metadata
+- Make config file used settable via command line or env vars

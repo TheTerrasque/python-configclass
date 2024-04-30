@@ -48,7 +48,6 @@ class EnvVarLoader:
                 data[field.name] = self.load_section(pfn, field.type)
             else:
                 name = "_".join(pfn).upper()
-                print("Checking for env var:",name)
                 if name in os.environ:
                     data[field.name] = os.environ[name]
                     if field.type == bool:
@@ -86,7 +85,7 @@ class ArgumentParser:
             if path:
                 data[path[0]] = data.get(path[0], {})
                 current = data[path[0]]
-                for p in path[1:-1]:
+                for p in path[1:]:
                     current[p] = current.get(p, {})
                     current = current[p]
                 current[field.name] = value
