@@ -1,7 +1,7 @@
 # Config Class
 
 ## Introduction
-This README provides an overview of the Config Class, a utility for managing configuration settings in Python projects.
+Config Class is a simple package for managing configuration settings in Python projects.
 
 ## Features
 - **Easy Configuration**: The Config Class simplifies the process of managing configuration settings in your Python projects.
@@ -42,7 +42,7 @@ print(setting.foo, setting.footoo, setting.test.test, settings.my_model)
 ```
 
 ```
-python setting_test.py --foo true --footoo false --test-test "Test me" --my_model "model2.pt"
+$ python setting_test.py --foo true --footoo false --test-test "Test me" --my_model "model2.pt"
 ```
 
 config.yaml:
@@ -64,8 +64,8 @@ config.json:
 
 Environment variables:
 ```
-CONFIG_FOO="true" python settings_test.py
-CONFIG_TEST_TEST="Hey mate" python settings_test.py
+$ CONFIG_FOO="true" python settings_test.py
+$ CONFIG_TEST_TEST="Hey mate" python settings_test.py
 ```
 ### Overriding defaults
 
@@ -83,3 +83,9 @@ Setting any of these to `None` will disable that part as a config source.
 
 - Add optional documentation to fields for use in argparse, most likely via field() metadata
 - Make config file used settable via command line or env vars
+
+## Backstory
+
+Most of my python projects are fairly small scripts, but they still have parts I want to configure. I usually use a dataclass for it, and use yaml or json to load from file and populate it. Later on I tend to add some command line arguments and/or env variables (for docker / kubernetes deployments).
+
+After writing the same kind of code for the nth time, I decided to put together a small package for handling just that. I searched a bit online, but couldn't find a simple solution I liked. OmegaConf is a bit too heavy for my small projects, and I never really liked hydra.
