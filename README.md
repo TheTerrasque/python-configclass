@@ -1,7 +1,9 @@
 # Config Class
 
 ## Introduction
-Config Class is a simple package for managing configuration settings in Python projects.
+Config Class is a simple package for managing configuration settings in smaller Python projects.
+
+It's goal is to be as simple as writing a dataclass, with automatic handling of multiple configuration sources.
 
 ## Features
 - **Easy Configuration**: The Config Class simplifies the process of managing configuration settings in your Python projects.
