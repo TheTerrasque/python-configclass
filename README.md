@@ -38,7 +38,7 @@ class Settings:
 
 setting = Settings.load()
 
-print(setting.foo, setting.footoo, setting.test.test, settings.my_model)
+print(setting.foo, setting.footoo, setting.test.test, setting.my_model)
 ```
 
 ```
