@@ -1,1 +1,1 @@
-from .configclass import configclass
+from .config_class import configclass
