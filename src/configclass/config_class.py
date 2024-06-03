@@ -45,7 +45,9 @@ class EnvVarLoader:
         for field in fields(cls):
             pfn = env_path + [field.name]
             if is_dataclass(field.type):
-                data[field.name] = self.load_section(pfn, field.type)
+                r = self.load_section(pfn, field.type)
+                if r:
+                    data[field.name] = r
             else:
                 name = "_".join(pfn).upper()
                 if name in os.environ:
