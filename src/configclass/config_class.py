@@ -59,7 +59,7 @@ class EnvVarLoader:
 class ArgumentParser:
     def __init__(self, description, cls):
         import argparse
-        self.parser = argparse.ArgumentParser(description=description)
+        self.parser = argparse.ArgumentParser(description=description, fromfile_prefix_chars='@', epilog="Arguments can also be read from a file using @file as argument, one argument per line")
         self.cls = cls
         self.translate = {}
         self.make_argparse(self.parser, [], cls)
